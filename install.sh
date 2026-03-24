@@ -25,28 +25,49 @@ fi
 echo "🔄 Обновление баз Homebrew..."
 brew update
 
+clear
+
 # 3. Обычные пакеты
 echo "🐳 Установка Docker..."
 brew install docker
+
+clear
 
 # 4. Установка NotepadNext через пользовательский tap
 echo "📝 Установка NotepadNext..."
 brew tap dail8859/notepadnext
 brew install --no-quarantine notepadnext
 
+clear
+
 # 5. Приложения с графическим интерфейсом (Casks)
 echo "💻 Установка программ с графическим интерфейсом (Casks)..."
+echo "Установка AI софта..."
 brew install --cask claude
 brew install --cask chatgpt
+
+clear
+
+echo "Установка Мессенджеров..."
 brew install --cask slack
 brew install --cask telegram
+
+clear
+
+echo "Установка Инструментов разработки..."
 brew install --cask android-platform-tools
 brew install --cask android-studio
 brew install --cask cursor
 brew install --cask flutter
+
+clear
+
+echo "Установка Остального софта..."
 brew install --cask epic-games
 brew install --cask deepl
 brew install --cask spotify
+
+clear
 
 # 6. Специфичные пакеты
 echo "⚠️ Попытка установки нестандартных пакетов..."
@@ -55,5 +76,7 @@ brew install --cask antigravity || echo "❌ antigravity не найден."
 brew install copilot-cli || echo "❌ copilot-cli не найден."
 brew install cline || echo "❌ cline не найден."
 brew install opencode || echo "❌ opencode не найден."
+
+clear
 
 echo "🎉 Установка полностью завершена!"
