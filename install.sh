@@ -66,6 +66,7 @@ echo "Установка Остального софта..."
 brew install --cask epic-games
 brew install --cask deepl
 brew install --cask spotify
+brew install --cask google-chrome
 
 clear
 
