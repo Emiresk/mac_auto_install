@@ -1,35 +1,96 @@
 #!/bin/bash
 
+# Отключаем лишние подсказки Homebrew для чистоты консоли
+export HOMEBREW_NO_ENV_HINTS=1
+
+# ==========================================
+# 📋 СПИСКИ ПРОГРАММ ДЛЯ УСТАНОВКИ
+# ==========================================
+
+CASK_APPS=(
+    #AI
+    claude
+    chatgpt
+    cursor
+
+    #Dev tools
+    android-studio
+    flutter
+    
+
+    #Work Apps
+    slack
+    telegram
+    google-chrome
+    notion
+    libreoffice
+
+    #tools
+    android-platform-tools
+    qbittorrent
+    nordvpn
+    spotify
+    deepl
+
+    #games
+    steam
+    epic-games
+    whisky
+)
+
+SPECIFIC_PACKAGES=(
+    python@3.14
+
+    #AI tools
+    qwen-code
+    copilot-cli
+    cline
+    opencode
+    
+    #macos cleaner
+    mole
+)
+
+# ==========================================
+
 echo "🚀 Начинаем настройку системы..."
 
-# --- Функция для умной установки ---
-# Аргумент 1: название пакета
-# Аргумент 2: тип (formula или cask, по умолчанию formula)
+# --- Умная функция установки ---
 install_package() {
     local name=$1
     local type=$2
 
+    if brew list ${type:+--cask} "$name" &>/dev/null; then
+        echo "✅ $name уже установлен (через brew). Пропускаем."
+        return 0
+    fi
+
+    echo -n "⏳ Проверка и установка $name... "
+
+    local output
     if [[ "$type" == "cask" ]]; then
-        if brew list --cask "$name" &>/dev/null; then
-            echo "✅ Cask '$name' уже установлен. Пропускаем."
-        else
-            echo "📥 Установка $name..."
-            brew install --cask "$name"
-        fi
+        output=$(brew install --cask "$name" 2>&1)
     else
-        if brew list "$name" &>/dev/null; then
-            echo "✅ Пакет '$name' уже установлен. Пропускаем."
-        else
-            echo "📥 Установка $name..."
-            brew install "$name"
-        fi
+        output=$(brew install "$name" 2>&1)
+    fi
+    
+    local status=$?
+
+    if [ $status -eq 0 ]; then
+        echo "Готово! 📥"
+    elif echo "$output" | grep -q -i "already an App at"; then
+        echo "Уже установлен вручную. Пропускаем. 👾"
+    elif echo "$output" | grep -q -i "No available formula\|Cask '$name' is unavailable"; then
+        echo "Пакет не найден! ❌"
+    else
+        echo "Ошибка установки! ⚠️"
     fi
 }
 
 # 1. Проверка и установка Homebrew
 if ! command -v brew &> /dev/null; then
-    echo "📦 Homebrew не найден..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo "📦 Homebrew не найден. Устанавливаем..."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" >/dev/null 2>&1
     
     if [[ -x "/opt/homebrew/bin/brew" ]]; then
         eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -38,33 +99,30 @@ if ! command -v brew &> /dev/null; then
     fi
 fi
 
-echo "🔄 Обновление баз Homebrew..."
-brew update
+echo "🔄 Обновление баз Homebrew (это может занять минутку)..."
+brew update -q >/dev/null 2>&1
 
 # 3. CLI Инструменты
 install_package "docker"
 
 # 4. NotepadNext (нужен tap)
-brew tap dail8859/notepadnext
-install_package "notepadnext"
+brew tap dail8859/notepadnext >/dev/null 2>&1
+install_package "notepadnext" "cask"
 
-# 5. Приложения с графическим интерфейсом (Casks)
+# 5. Установка Casks (перебираем массив)
 echo "💻 Установка Casks..."
-for app in claude chatgpt slack telegram android-studio cursor flutter epic-games deepl spotify google-chrome; do
+for app in "${CASK_APPS[@]}"; do
     install_package "$app" "cask"
 done
 
-# Отдельно для специфичных настроек
-install_package "android-platform-tools" "cask"
-
-# 6. Специфичные пакеты с обработкой ошибок
-echo "⚠️ Проверка специфичных пакетов..."
-for pkg in qwen-code copilot-cli cline opencode; do
-    if ! brew list "$pkg" &>/dev/null; then
-        brew install "$pkg" || echo "❌ $pkg не найден."
-    else
-        echo "✅ $pkg уже на месте."
-    fi
+# 6. Установка специфичных пакетов (перебираем массив)
+echo "⚠️ Установка специфичных пакетов..."
+for pkg in "${SPECIFIC_PACKAGES[@]}"; do
+    install_package "$pkg"
 done
+
+# Очистка кэша от скачанных установщиков
+echo "🧹 Очистка кэша..."
+brew cleanup -q >/dev/null 2>&1
 
 echo "🎉 Установка полностью завершена!"
