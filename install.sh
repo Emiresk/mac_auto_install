@@ -87,18 +87,6 @@ install_package() {
     fi
 }
 
-# 1. Проверка и установка Homebrew
-if ! command -v brew &> /dev/null; then
-    echo "📦 Homebrew не найден. Устанавливаем..."
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" >/dev/null 2>&1
-    
-    if [[ -x "/opt/homebrew/bin/brew" ]]; then
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-    elif [[ -x "/usr/local/bin/brew" ]]; then
-        eval "$(/usr/local/bin/brew shellenv)"
-    fi
-fi
-
 echo "🔄 Обновление баз Homebrew (это может занять минутку)..."
 brew update -q >/dev/null 2>&1
 
