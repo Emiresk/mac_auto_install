@@ -11,12 +11,11 @@ CASK_APPS=(
     #AI
     claude
     chatgpt
-    cursor
 
     #Dev tools
     android-studio
     flutter
-    
+    antigravity
 
     #Work Apps
     slack
@@ -25,15 +24,13 @@ CASK_APPS=(
     notion
     libreoffice
 
-    #tools
-    android-platform-tools
+    #Tools
     qbittorrent
     nordvpn
     spotify
-    deepl
     lm-studio
 
-    #games
+    #Games
     steam
     epic-games
     whisky
