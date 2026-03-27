@@ -31,6 +31,7 @@ CASK_APPS=(
     nordvpn
     spotify
     deepl
+    lm-studio
 
     #games
     steam
@@ -40,12 +41,11 @@ CASK_APPS=(
 
 SPECIFIC_PACKAGES=(
     python@3.14
-
+    mc
+    
     #AI tools
     qwen-code
     copilot-cli
-    cline
-    opencode
     
     #macos cleaner
     mole
