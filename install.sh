@@ -15,7 +15,7 @@ CASK_APPS=(
     #Dev tools
     android-studio
     flutter
-    antigravity
+    visual-studio-code
 
     #Work Apps
     slack
@@ -87,20 +87,17 @@ install_package() {
 echo "🔄 Обновление баз Homebrew (это может занять минутку)..."
 brew update -q >/dev/null 2>&1
 
-# 3. CLI Инструменты
-install_package "docker"
-
-# 4. NotepadNext (нужен tap)
+# NotepadNext (нужен tap)
 brew tap dail8859/notepadnext >/dev/null 2>&1
 install_package "notepadnext" "cask"
 
-# 5. Установка Casks (перебираем массив)
+# Установка Casks (перебираем массив)
 echo "💻 Установка Casks..."
 for app in "${CASK_APPS[@]}"; do
     install_package "$app" "cask"
 done
 
-# 6. Установка специфичных пакетов (перебираем массив)
+# Установка специфичных пакетов (перебираем массив)
 echo "⚠️ Установка специфичных пакетов..."
 for pkg in "${SPECIFIC_PACKAGES[@]}"; do
     install_package "$pkg"
