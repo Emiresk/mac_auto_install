@@ -9,20 +9,18 @@ export HOMEBREW_NO_ENV_HINTS=1
 
 CASK_APPS=(
     #AI
-    claude
     chatgpt
 
     #Dev tools
-    android-studio
     flutter
     visual-studio-code
+    android-platform-tools
 
     #Work Apps
     slack
     telegram
     google-chrome
     notion
-    libreoffice
 
     #Tools
     qbittorrent
@@ -31,8 +29,6 @@ CASK_APPS=(
     lm-studio
 
     #Games
-    steam
-    epic-games
     whisky
 )
 
