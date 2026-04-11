@@ -14,12 +14,14 @@ CASK_APPS=(
     #Dev tools
     flutter
     visual-studio-code
-    android-platform-tools
+    android-studio
+    docker-desktop
 
     #Work Apps
     slack
     telegram
     google-chrome
+    opera
     notion
 
     #Tools
@@ -27,6 +29,7 @@ CASK_APPS=(
     nordvpn
     spotify
     lm-studio
+
 
     #Games
     whisky
