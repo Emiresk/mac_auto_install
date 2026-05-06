@@ -10,12 +10,15 @@ export HOMEBREW_NO_ENV_HINTS=1
 CASK_APPS=(
     #AI
     chatgpt
+    codex
+    claude-code
 
     #Dev tools
     flutter
     visual-studio-code
     android-studio
     docker-desktop
+    
 
     #Work Apps
     slack
@@ -28,8 +31,6 @@ CASK_APPS=(
     qbittorrent
     nordvpn
     spotify
-    lm-studio
-
 
     #Games
     whisky
@@ -40,8 +41,8 @@ SPECIFIC_PACKAGES=(
     mc
     
     #AI tools
-    qwen-code
     copilot-cli
+    
     
     #macos cleaner
     mole
