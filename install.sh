@@ -26,7 +26,8 @@ CASK_APPS=(
     google-chrome
     opera
     notion
-
+    joplin
+    
     #Tools
     qbittorrent
     nordvpn
