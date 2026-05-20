@@ -18,6 +18,7 @@ CASK_APPS=(
     flutter
     visual-studio-code
     android-studio
+    android-platform-tools
     docker-desktop
 
     #Work Apps
