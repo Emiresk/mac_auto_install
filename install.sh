@@ -12,41 +12,34 @@ CASK_APPS=(
     chatgpt
     codex
     claude-code
-
-    #Dev tools
+    claude
+    
+    #Developer tools
     flutter
     visual-studio-code
     android-studio
     docker-desktop
-    
 
     #Work Apps
     slack
     telegram
     google-chrome
-    opera
-    notion
     joplin
     
     #Tools
     qbittorrent
     nordvpn
     spotify
-
-    #Games
-    whisky
+    appcleaner
 )
 
 SPECIFIC_PACKAGES=(
+    #Develop tools
     python@3.14
-    mc
-    
-    #AI tools
-    copilot-cli
-    
     
     #macos cleaner
     mole
+    mc
 )
 
 # ==========================================
