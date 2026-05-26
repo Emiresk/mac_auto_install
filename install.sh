@@ -32,13 +32,18 @@ CASK_APPS=(
     nordvpn
     spotify
     appcleaner
+
+    #Games
+    steam
+    vcmi
 )
 
 SPECIFIC_PACKAGES=(
     #Develop tools
-    python@3.14
+    python@3.11
+    npm
     
-    #macos cleaner
+    #Macos tools
     mole
     mc
 )
