@@ -30,9 +30,9 @@ CASK_APPS=(
     #Tools
     qbittorrent
     nordvpn
+    clearvpn
     spotify
-    appcleaner
-
+    
     #Games
     steam
     vcmi
@@ -41,11 +41,16 @@ CASK_APPS=(
 SPECIFIC_PACKAGES=(
     #Develop tools
     python@3.11
+    openjdk@17
     npm
+    libimobiledevice
+
     
     #Macos tools
-    mole
     mc
+
+    #brew tap mobile-dev-inc/tap
+    #brew install mobile-dev-inc/tap/maestro
 )
 
 # ==========================================
