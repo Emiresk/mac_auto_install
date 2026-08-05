@@ -8,43 +8,12 @@ export HOMEBREW_NO_ENV_HINTS=1
 # ==========================================
 
 CASK_APPS=(
-    #AI
-    chatgpt
-    claude-code
-    claude
-    
-    #Developer tools
-    flutter
-    visual-studio-code
-    android-studio
-    android-platform-tools
     docker-desktop
-
-    #Messengers
-    slack
-    telegram
-
-    #Browsers
     google-chrome
     brave-browser
-    
-    #Tools
-    qbittorrent
-    
-    #VPN
-    nordvpn
     clearvpn
-    
-    #Music
     spotify
-    
-    #Games
-    steam
-    vcmi
-
-    #Utility
-    joplin
-)
+    vcmi)
 
 SPECIFIC_PACKAGES=(
     #Develop tools
