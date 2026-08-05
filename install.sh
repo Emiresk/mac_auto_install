@@ -10,7 +10,6 @@ export HOMEBREW_NO_ENV_HINTS=1
 CASK_APPS=(
     #AI
     chatgpt
-    codex
     claude-code
     claude
     
@@ -21,33 +20,44 @@ CASK_APPS=(
     android-platform-tools
     docker-desktop
 
-    #Work Apps
+    #Messengers
     slack
     telegram
+
+    #Browsers
     google-chrome
-    joplin
+    brave-browser
     
     #Tools
     qbittorrent
+    
+    #VPN
     nordvpn
     clearvpn
+    
+    #Music
     spotify
     
     #Games
     steam
     vcmi
+
+    #Utility
+    joplin
 )
 
 SPECIFIC_PACKAGES=(
     #Develop tools
-    python@3.11
     openjdk@17
     npm
     libimobiledevice
-
+    ios-deploy
     
     #Macos tools
     mc
+
+    #AI
+    anomalyco/tap/opencode
 
     #brew tap mobile-dev-inc/tap
     #brew install mobile-dev-inc/tap/maestro
