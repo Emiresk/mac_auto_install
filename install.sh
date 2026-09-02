@@ -32,7 +32,6 @@ CASK_APPS=(
     qbittorrent
     
     #VPN
-    nordvpn
     clearvpn
     
     #Music
